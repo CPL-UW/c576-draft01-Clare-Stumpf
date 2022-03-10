@@ -454,60 +454,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &369438380
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 369438381}
-  - component: {fileID: 369438382}
-  m_Layer: 0
-  m_Name: HUDButtons
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &369438381
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 369438380}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8612709, y: 0.7208616, z: 24.595692}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 978451032}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &369438382
+--- !u!114 &346271212 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6284424899237246171, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
+  m_PrefabInstance: {fileID: 4817611528657263459}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 369438380}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29c241ef7a025764f9222ed0fd87da0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitButton: {fileID: 790388723}
-  playButton: {fileID: 968848054}
-  buildingButton: {fileID: 1276027270}
-  insuranceButton: {fileID: 1137622353}
-  financeButton: {fileID: 700555844}
-  otherButton: {fileID: 1431568747}
-  insuranceOptions: {fileID: 1202076113}
-  buildingOptions: {fileID: 2118215193}
-  financeOptions: {fileID: 84458651}
-  otherOptions: {fileID: 260979503}
 --- !u!1 &406586449
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,6 +476,7 @@ GameObject:
   - component: {fileID: 406586452}
   - component: {fileID: 406586451}
   - component: {fileID: 406586450}
+  - component: {fileID: 406586453}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -643,6 +601,85 @@ RectTransform:
   m_AnchoredPosition: {x: 80, y: -32}
   m_SizeDelta: {x: 128, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &406586453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406586449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec90d62888d0be74da97548019f5b378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeText: {fileID: 406586450}
+--- !u!1 &424629538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 424629540}
+  - component: {fileID: 424629539}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &424629539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424629538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ddef5a8f9f9a8f489d83d3bdf098936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitButton: {fileID: 790388723}
+  playButton: {fileID: 968848054}
+  buildingButton: {fileID: 1276027270}
+  insuranceButton: {fileID: 1137622353}
+  financeButton: {fileID: 700555844}
+  otherButton: {fileID: 1431568747}
+  insuranceMenu: {fileID: 1202076113}
+  buildingMenu: {fileID: 2118215193}
+  financeMenu: {fileID: 84458651}
+  otherMenu: {fileID: 260979503}
+  timeText: {fileID: 406586450}
+  moneyText: {fileID: 1625219893}
+  insuranceExit: {fileID: 4817611528657263460}
+  buildingExit: {fileID: 2118215192}
+  financeExit: {fileID: 569916857}
+  otherExit: {fileID: 714682968}
+  buildingOpt1: {fileID: 911302136}
+  buildingOpt2: {fileID: 1207194579}
+  buildingOpt3: {fileID: 1165995971}
+  insuranceOpt1: {fileID: 1000639836}
+  insuranceOpt2: {fileID: 1130653320}
+  insuranceOpt3: {fileID: 346271212}
+--- !u!4 &424629540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424629538}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.1256287, y: 1.091444, z: 18.443666}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &518327419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,12 +1534,23 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1577421578}
   - {fileID: 1026834819}
-  - {fileID: 369438381}
+  - {fileID: 1162318699}
+  - {fileID: 1760681364}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1000639836 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6284424899470762016, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
+  m_PrefabInstance: {fileID: 4817611528657263459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1026834817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,7 +1580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec90d62888d0be74da97548019f5b378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeValue: 0
   timeText: {fileID: 406586450}
 --- !u!4 &1026834819
 Transform:
@@ -1547,8 +1594,19 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 978451032}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1130653320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6284424898649288995, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
+  m_PrefabInstance: {fileID: 4817611528657263459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1137622351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,7 +1738,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4817611528897212725, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_text
-      value: 'Other Information
+      value: 'Loss  Information
 
 '
       objectReference: {fileID: 0}
@@ -1690,7 +1748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4817611529177745958, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_text
-      value: Maybe like if I add in some more complex
+      value: 'Medium Risk: $0 - 63%, $100k - 30%, $500k - 6%, $1M - 2% '
       objectReference: {fileID: 0}
     - target: {fileID: 4817611529620251314, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_Name
@@ -1786,14 +1844,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4817611529658589347, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_text
-      value: Features and stuff
+      value: 'High Risk: $0 - 50%, $100k - 40%, $500k - 8%, $1M - 2% '
       objectReference: {fileID: 0}
     - target: {fileID: 4817611529771397170, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_text
-      value: Other Neccessary Information will go here
+      value: 'Low Risk: $0 - 76%, $100k - 19%, $500k - 4%, $1M - 1% '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
+--- !u!1 &1162318698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1162318699}
+  - component: {fileID: 1162318700}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1162318699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162318698}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.421862, y: 0.45993492, z: 27.655807}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 978451032}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1162318700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162318698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eca19ece005f7040bcd23a848451621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingMoney: 1000000
+  currentMoney: 0
+  totalMoneySpent: 0
+  history: []
+  moneyText: {fileID: 1625219893}
 --- !u!114 &1165995971 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6284424899237246171, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
@@ -2019,7 +2126,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Other Info
+  m_text: Loss Info
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5484,61 +5591,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1577421577
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1577421578}
-  - component: {fileID: 1577421579}
-  m_Layer: 0
-  m_Name: SubMenus
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1577421578
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577421577}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7323904, y: -1.3034587, z: 25.571526}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 978451032}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1577421579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577421577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16cf5edcd8c1ad541976bd6c288ad0ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  insuranceExit: {fileID: 4817611528657263460}
-  buildingExit: {fileID: 2118215192}
-  financeExit: {fileID: 569916857}
-  otherExit: {fileID: 714682968}
-  insuranceOptions: {fileID: 1202076113}
-  buildingOptions: {fileID: 2118215193}
-  financeOptions: {fileID: 84458651}
-  otherOptions: {fileID: 260979503}
-  buildingOpt1: {fileID: 911302136}
-  buildingOpt2: {fileID: 1207194579}
-  buildingOpt3: {fileID: 1165995971}
 --- !u!1 &1625219891
 GameObject:
   m_ObjectHideFlags: 0
@@ -5550,6 +5602,7 @@ GameObject:
   - component: {fileID: 1625219892}
   - component: {fileID: 1625219894}
   - component: {fileID: 1625219893}
+  - component: {fileID: 1625219895}
   m_Layer: 5
   m_Name: CashAvailable
   m_TagString: Untagged
@@ -5674,6 +5727,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625219891}
   m_CullTransparentMesh: 1
+--- !u!114 &1625219895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625219891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81b7ba9c85efa44489476f43243c2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 1625219893}
 --- !u!1 &1760681362
 GameObject:
   m_ObjectHideFlags: 0
@@ -5706,6 +5772,8 @@ MonoBehaviour:
   _width: 9
   _height: 5
   _tilePrefab: {fileID: 6497991869908369895, guid: c99db356ed5075945a0d6f6da1afdb87, type: 3}
+  water: {fileID: 21300000, guid: 03d58824491445d4d9283f4889b6949e, type: 3}
+  tree: {fileID: 21300000, guid: 31f26b1eedd598e4892989d574de1dd2, type: 3}
 --- !u!4 &1760681364
 Transform:
   m_ObjectHideFlags: 0
@@ -5713,13 +5781,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760681362}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.064152, y: 6.3824296, z: -0.18171383}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -23.498215, y: 6.815918, z: 9.010445}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 978451032}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2062889236
 GameObject:
@@ -5967,11 +6035,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4817611529658589347, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_text
-      value: 'Price: 300k Revenue: 400k Risk: High'
+      value: 'Price: 600k Revenue: 350k Risk: Low'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817611529658589405, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4817611529771397170, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_text
-      value: 'Price: 600k Revenue: 350k Risk: Low'
+      value: 'Price: 300k Revenue: 400k Risk: High'
       objectReference: {fileID: 0}
     - target: {fileID: 6284424898649288994, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6046,7 +6118,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -6154,6 +6226,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 241972693}
     m_Modifications:
+    - target: {fileID: 4817611529177745958, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
+      propertyPath: m_text
+      value: 'Option 2: Deductible: 50k Premium: 71k'
+      objectReference: {fileID: 0}
     - target: {fileID: 4817611529620251314, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_Name
       value: InsuranceOptions
@@ -6245,6 +6321,10 @@ PrefabInstance:
     - target: {fileID: 4817611529620251319, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817611529658589347, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
+      propertyPath: m_text
+      value: 'Option 3: Deductible: 500k Premium: 20k'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}

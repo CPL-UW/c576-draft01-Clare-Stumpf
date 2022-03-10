@@ -12,6 +12,11 @@ public class Grid : MonoBehaviour
     private float startX = -16;
     private float startY = -7.2f;
 
+    public Sprite water;
+    public Sprite tree;
+
+
+
     private Dictionary<Vector2, Tile> _tiles;
 
     //https://www.youtube.com/watch?v=kkAjpQAM-jE
@@ -35,6 +40,16 @@ public class Grid : MonoBehaviour
                 spawnedTile.name = $"Tile {x} {y}";
                 var isOffset = (x%2 == 0 && y %2 !=0) || (x%2 != 0 && y %2 ==0); 
                 spawnedTile.Init(isOffset);
+
+                var rand = Random.Range(0,10);
+                if(rand == 0) {
+                    // Water
+                    spawnedTile.GetComponent<SpriteRenderer>().color = Color.blue;
+                }
+                if(rand == 1) {
+                    // Tree
+                    spawnedTile.GetComponent<SpriteRenderer>().sprite = tree;
+                }
 
                 _tiles[new Vector2(x,y)] = spawnedTile;
             }

@@ -183,10 +183,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527b2d20d2b83e942842d3020e153f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {r: 0.21231751, g: 0.58696663, b: 0.7924528, a: 1}
-  _offsetColor: {r: 0.09740115, g: 0.36335775, b: 0.9056604, a: 1}
+  _baseColor: {r: 1, g: 1, b: 1, a: 1}
+  _offsetColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   _renderer: {fileID: 4798535951756386251}
   _highlight: {fileID: 2752445482005071712}
+  buildings:
+  - {fileID: 21300000, guid: 0a7f9ff4b492d2649be359a8c77b83f0, type: 3}
+  - {fileID: 21300000, guid: 035c5c135db0cc4488def9bd60138377, type: 3}
+  - {fileID: 21300000, guid: 1a0e339443243124eaaf7236ca1b4384, type: 3}
 --- !u!61 &4902977397464660138
 BoxCollider2D:
   m_ObjectHideFlags: 0

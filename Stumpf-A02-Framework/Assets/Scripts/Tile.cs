@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class Tile : MonoBehaviour
 {
@@ -9,9 +11,13 @@ public class Tile : MonoBehaviour
     [SerializeField] private Color _offsetColor;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private GameObject _highlight;
+    public Sprite[] buildings;
+
     
-    private bool subMenuOn; 
+    private bool disableGrid; 
     private int addBuilding;
+    private int addInsurance;
+
     private Tile selectedTile;
 
     public void Init(bool isOffset) {
@@ -19,8 +25,8 @@ public class Tile : MonoBehaviour
     }
 
     void OnMouseEnter() {
-        subMenuOn = HUDButtons.GetSubMenuOn();
-        if(subMenuOn == false) {
+        disableGrid = Manager.GetDisableGrid();
+        if(disableGrid == false) {
             _highlight.SetActive(true);
         }
     }
@@ -31,22 +37,20 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown() {
         selectedTile = this;
-        subMenuOn = HUDButtons.GetSubMenuOn();
-        addBuilding = SubMenus.GetAddBuilding();
-
+        disableGrid = Manager.GetDisableGrid();
+        addBuilding = Manager.GetAddBuilding();
+        addInsurance = Manager.GetAddBuilding();
+        
         if(addBuilding > 0) {
-            if(addBuilding == 1) {
-                selectedTile.GetComponent<SpriteRenderer>().color = new Color32(255,0,0,100);
-            }
-             if(addBuilding == 2) {
-                selectedTile.GetComponent<SpriteRenderer>().color = new Color32(255,255,0,100);
-            }
-             if(addBuilding == 3) {
-                selectedTile.GetComponent<SpriteRenderer>().color = new Color32(255,0,225,100);
-            }
-            SubMenus.ChangeAddBuilding();
+            selectedTile.GetComponent<SpriteRenderer>().sprite = buildings[addBuilding - 1];
+            Manager.currentMoney -= Manager.buildingPrices[addBuilding - 1];
+            Manager.totalMoneySpent += Manager.buildingPrices[addBuilding - 1];
+            Manager.buildingsPurchased.Add(selectedTile);
+            Manager.buildTypePurchased.Add(addBuilding - 1);
+            Manager.ChangeAddBuilding();
+            // UpdateMoneyText()
         }
-        if(subMenuOn == false) {
+        if(disableGrid == false) {
             Debug.Log("Tile has been clicked");
         }
     }
