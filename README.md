@@ -19,7 +19,7 @@ Features Implemented
 7. Loss Info Shows the Loss Amounts and Probabilities for Low, Medium, and High Risk Profiles
 8. Hitting Play will simulate random losses and calculate the losses, revenue, and amount covered by insurance
 9. After a set number of years (currently set at 2 just for testing), it prints in the console whether you won or lost (do you have more or less than what you started with?)
-10. Linked Firebase to Unity Project (doesn't do anything right now)
+10. Linked Firebase to Unity Project (doesn't do anything right now and is not in this repository b/c it's too large (maybe there's a gitignore file I can find/make?)
 
 Features To Be Implemented
 1. Have the ability to see financial summary (currently just in debug)
