@@ -10,16 +10,20 @@ using TMPro;
 public class MoneyText : MonoBehaviour
 {
     public TMP_Text moneyText;
+    private String temp;
     
     // Start is called before the first frame update
     void Start()
     {
-        moneyText.text = "$:" + Manager.currentMoney;
+        temp = String.Format("{0:N0}", Manager.currentMoney);
+        moneyText.text = "$" + temp;
     }
 
     public void UpdateMoneyText() {
-        moneyText.text = "$:" + Manager.currentMoney;
+        temp = String.Format("{0:N0}", Manager.currentMoney);
+        moneyText.text = "$" + temp;
     }
+    
 
     void Update() {
         UpdateMoneyText();

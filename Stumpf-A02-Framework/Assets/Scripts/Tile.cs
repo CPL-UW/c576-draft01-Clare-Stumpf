@@ -42,16 +42,18 @@ public class Tile : MonoBehaviour
         addInsurance = Manager.GetAddBuilding();
         
         if(addBuilding > 0) {
-            selectedTile.GetComponent<SpriteRenderer>().sprite = buildings[addBuilding - 1];
-            Manager.currentMoney -= Manager.buildingPrices[addBuilding - 1];
-            Manager.totalMoneySpent += Manager.buildingPrices[addBuilding - 1];
-            Manager.buildingsPurchased.Add(selectedTile);
-            Manager.buildTypePurchased.Add(addBuilding - 1);
-            Manager.ChangeAddBuilding();
-            // UpdateMoneyText()
-        }
-        if(disableGrid == false) {
-            Debug.Log("Tile has been clicked");
+            if(Manager.currentMoney < Manager.buildingPrices[addBuilding - 1]) {
+                Debug.Log("You don't have enough money!");
+            } else {
+                selectedTile.GetComponent<SpriteRenderer>().sprite = buildings[addBuilding - 1];
+                Manager.currentMoney -= Manager.buildingPrices[addBuilding - 1];
+                Manager.totalMoneySpent += Manager.buildingPrices[addBuilding - 1];
+                Manager.buildingsPurchased.Add(selectedTile);
+                Manager.buildTypePurchased.Add(addBuilding - 1);
+                Manager.ChangeAddBuilding();
+
+            }
+      
         }
     }
 }

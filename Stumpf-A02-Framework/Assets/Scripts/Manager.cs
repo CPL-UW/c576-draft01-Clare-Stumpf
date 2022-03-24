@@ -24,16 +24,14 @@ public class Manager : MonoBehaviour
     public static bool disableGrid;
 
     // Variables Relating to the SubMenus
-    public Button insuranceExit;
-    public Button buildingExit;
-    public Button financeExit;
-    public Button otherExit;
     public Button buildingOpt1;
     public Button buildingOpt2;
     public Button buildingOpt3;
     public Button insuranceOpt1;
     public Button insuranceOpt2;
     public Button insuranceOpt3;
+    public Button shiftFinanceForward;
+    public Button shiftFinanceBack;
 
 
     private static int addBuilding;
@@ -63,9 +61,10 @@ public class Manager : MonoBehaviour
     public static ArrayList buildingsPurchased;
     public static ArrayList buildTypePurchased;
     public static ArrayList insurancePurchased;
+    public static int showHistory;
 
     // Total Losses, Total Revenue Generated, Total Premiums Paid
-    public static string[] history;
+    public static int[,] history;
     // Also need an array to keep track of what building they have, what insurance contranct on the buildings they have, where the buildings are, and risk profiles
 
 
@@ -79,28 +78,28 @@ public class Manager : MonoBehaviour
         otherButton.onClick.AddListener(() => buttonCallBack(otherButton));
 
         // SubMenus
-        insuranceExit.onClick.AddListener(() => buttonCallBack(insuranceExit));
-        buildingExit.onClick.AddListener(() => buttonCallBack(buildingExit));
-        financeExit.onClick.AddListener(() => buttonCallBack(financeExit));
-        otherExit.onClick.AddListener(() => buttonCallBack(otherExit));
         buildingOpt1.onClick.AddListener(() => buttonCallBack(buildingOpt1));        
         buildingOpt2.onClick.AddListener(() => buttonCallBack(buildingOpt2));        
         buildingOpt3.onClick.AddListener(() => buttonCallBack(buildingOpt3));
         insuranceOpt1.onClick.AddListener(() => buttonCallBack(insuranceOpt1));        
         insuranceOpt2.onClick.AddListener(() => buttonCallBack(insuranceOpt2));        
-        insuranceOpt3.onClick.AddListener(() => buttonCallBack(insuranceOpt3));            
+        insuranceOpt3.onClick.AddListener(() => buttonCallBack(insuranceOpt3));
+        shiftFinanceForward.onClick.AddListener(() => buttonCallBack(shiftFinanceForward));            
+        shiftFinanceBack.onClick.AddListener(() => buttonCallBack(shiftFinanceBack));            
+            
        
         addBuilding = 0;
         disableGrid = false;
 
         buildingPrices = new int[] {300000, 500000, 600000};
         buildingRevenues = new int[] {400000, 300000, 350000};
-        damageAmounts = new int[] {0, 100000, 500000, 1000000};
-        damageProbabilities = new int[,] {{50, 40, 8, 2}, {63, 30, 6, 2}, {76, 19, 4, 1}};
+        damageAmounts = new int[] {0, 100000, 1000000};
+        damageProbabilities = new int[,] {{50, 90, 100}, {63, 93, 100}, {76, 95, 5}};
         insurancePremiums = new int[] {0, 71000, 20000};
         // Deductible for No insurance is technically infinity
-        insuranceDeductibles = new int[] {10000000, 50000, 500000};
+        insuranceDeductibles = new int[] {1000000000, 50000, 500000};
         totalYears = 2;
+        history = new int[totalYears, 4];
 
         year = 0;
         startingMoney = 1000000;
@@ -117,7 +116,7 @@ public class Manager : MonoBehaviour
         totalLossesCovered = 0;
         revenue = 0;
         totalRevenue = 0;
-        // history;
+        showHistory = year;
     }
 
     public static void ToggleMenu(GameObject subMenu) {
@@ -146,7 +145,6 @@ public class Manager : MonoBehaviour
         if(button == buildingButton) {
             ToggleMenu(buildingMenu);            
             insuranceMenu.SetActive(false);
-            buildingMenu.SetActive(true);
             financeMenu.SetActive(false);
             otherMenu.SetActive(false);    
             disableGrid = true;    
@@ -155,7 +153,6 @@ public class Manager : MonoBehaviour
             ToggleMenu(financeMenu);            
             insuranceMenu.SetActive(false);
             buildingMenu.SetActive(false);
-            financeMenu.SetActive(true);
             otherMenu.SetActive(false);
             disableGrid = true;        
         }
@@ -164,27 +161,9 @@ public class Manager : MonoBehaviour
             insuranceMenu.SetActive(false);
             buildingMenu.SetActive(false);
             financeMenu.SetActive(false);
-            otherMenu.SetActive(true);
             disableGrid = true;        
         }
-        if(button == insuranceExit) {
-            insuranceMenu.SetActive(false);
-            ChangeDisableGrid(false);
-
-        }
-        if(button == buildingExit) {
-            buildingMenu.SetActive(false);
-            ChangeDisableGrid(false);
-        }
-        if(button == financeExit) {
-            financeMenu.SetActive(false);
-            ChangeDisableGrid(false);
-        }
-        if(button == otherExit) {
-            otherMenu.SetActive(false);
-            ChangeDisableGrid(false);
-        }
-        
+       
         if(button == buildingOpt1) {
             buildingMenu.SetActive(false);
             ChangeDisableGrid(false);
@@ -216,6 +195,16 @@ public class Manager : MonoBehaviour
             insuranceMenu.SetActive(false);
             ChangeDisableGrid(false);
         }
+        if(button == shiftFinanceForward) {
+            if(showHistory + 1 < year) {
+                showHistory++;
+            }
+        }
+        if(button == shiftFinanceBack) {
+            if(showHistory - 1 >= 0) {
+                showHistory--;
+            }
+        }
 
     }
 
@@ -236,22 +225,31 @@ public class Manager : MonoBehaviour
     }
     
     public static void AddInsurance(int ins) {
-        currentMoney -= insurancePremiums[ins];
-        insurancePurchased.Add(ins);
+        if(currentMoney < Manager.insurancePremiums[ins]) {
+            Debug.Log("You don't have enough money!");
+        } else {
+            currentMoney -= insurancePremiums[ins];
+            insurancePurchased.Add(ins);
+        }
+
     }
 
     private static void PlayYear() {
         // Have Random Events Happen
         for (int i = 0; i < buildTypePurchased.Count; i++) {
             var rand = Random.Range(0,100);
+            Debug.Log(rand);
             currentMoney += buildingRevenues[(int)buildTypePurchased[i]];
             revenue += buildingRevenues[(int)buildTypePurchased[i]];
             totalRevenue += buildingRevenues[(int)buildTypePurchased[i]];
 
             if(rand < damageProbabilities[(int)buildTypePurchased[i],0]) {
                 // Nothing Happens - Loss of 0
+                Debug.Log("No Loss");
 
-            } else if(rand < damageProbabilities[(int)buildTypePurchased[i],0]) {
+            } else if(rand < damageProbabilities[(int)buildTypePurchased[i],1]) {
+                Debug.Log("Low Loss");
+
                 losses += damageAmounts[1];
                 totalLosses += damageAmounts[1];
                 numLosses++;
@@ -263,10 +261,11 @@ public class Manager : MonoBehaviour
                     currentMoney -= insuranceDeductibles[(int) insurancePurchased[i]];
                     lossesCovered += damageAmounts[1] - insuranceDeductibles[(int) insurancePurchased[i]];
                     totalLossesCovered += damageAmounts[1] - insuranceDeductibles[(int) insurancePurchased[i]];
-
                 }
                 
-            } else if(rand < damageProbabilities[(int)buildTypePurchased[i],0]) {
+            } else if(rand < damageProbabilities[(int)buildTypePurchased[i],2]) {
+                Debug.Log("High Loss");
+
                 losses += damageAmounts[2];
                 totalLosses += damageAmounts[2];
                 numLosses++;
@@ -280,35 +279,27 @@ public class Manager : MonoBehaviour
                     totalLossesCovered += damageAmounts[2] - insuranceDeductibles[(int) insurancePurchased[i]];
 
                 } 
-            } else {
-                losses += damageAmounts[3];
-                totalLosses += damageAmounts[3];
-                numLosses++;
-                totalNumLosses++;
-                // If the amount is less than the deductible, they pay the entire amount
-                if(damageAmounts[3] < insuranceDeductibles[(int)insurancePurchased[i]]) {
-                    currentMoney -= damageAmounts[3];
-                } else {
-                    currentMoney -= insuranceDeductibles[(int)insurancePurchased[i]];
-                    lossesCovered += damageAmounts[3] - insuranceDeductibles[(int) insurancePurchased[i]];
-                    totalLossesCovered += damageAmounts[3] - insuranceDeductibles[(int) insurancePurchased[i]];
-
-                }
             }
         }
 
-        // Create Summary of What Happened
         Debug.Log("Current Money: " + currentMoney);
-        Debug.Log("Revenue: " + revenue);
+        
+        history[year,0] = revenue;
+        history[year,1] = numLosses;
+        history[year,2] = losses;
+        history[year,3] = lossesCovered;
 
+        Debug.Log("Revenue: " + revenue);
         Debug.Log("Num Losses: " + numLosses);
         Debug.Log("Losses: " + losses);
         Debug.Log("Losses Covered: " + lossesCovered);
-        Debug.Log("Total Revenue:  " + totalRevenue);
 
+        Debug.Log("Total Revenue:  " + totalRevenue);
         Debug.Log("Total Num Losses: " + totalNumLosses);
         Debug.Log("Total Losses: " + totalLosses);
         Debug.Log("Total Losses Covered: " + totalLossesCovered);
+
+        showHistory = year;
 
         if(year == totalYears) {
             // TODO: Game Over Scene
@@ -322,7 +313,7 @@ public class Manager : MonoBehaviour
             lossesCovered = 0;
             numLosses = 0;
             year++;
-
+            // financeMenu.SetActive(true);
         }
     }
 

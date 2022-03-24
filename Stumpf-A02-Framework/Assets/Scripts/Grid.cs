@@ -36,7 +36,7 @@ public class Grid : MonoBehaviour
         _tiles = new Dictionary<Vector2, Tile>();
         for(int x = 0; x < _width; x++) {
             for(int y = 0; y < _height; y++) {
-                var spawnedTile = Instantiate(_tilePrefab, new Vector3((4*x) + startX,(4*y) + startY, -10), Quaternion.identity);
+                var spawnedTile = Instantiate(_tilePrefab, new Vector3((4*x) + startX,(4*y) + startY, -1), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
                 var isOffset = (x%2 == 0 && y %2 !=0) || (x%2 != 0 && y %2 ==0); 
                 spawnedTile.Init(isOffset);
