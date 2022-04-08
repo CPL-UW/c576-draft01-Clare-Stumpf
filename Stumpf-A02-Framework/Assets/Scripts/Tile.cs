@@ -12,8 +12,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private GameObject _highlight;
     public Sprite[] buildings;
-
-    
+    public bool clickable = true;    
     private bool disableGrid; 
     private int addBuilding;
     private int addInsurance;
@@ -24,9 +23,17 @@ public class Tile : MonoBehaviour
         _renderer.color = isOffset ? _offsetColor : _baseColor;
     }
 
+    public bool getClickable() {
+        return clickable;
+    }
+
+    public void setClickable(bool newValue) {
+        clickable = newValue;
+    }
+
     void OnMouseEnter() {
         disableGrid = Manager.GetDisableGrid();
-        if(disableGrid == false) {
+        if(disableGrid == false && clickable == true) {
             _highlight.SetActive(true);
         }
     }
@@ -41,19 +48,11 @@ public class Tile : MonoBehaviour
         addBuilding = Manager.GetAddBuilding();
         addInsurance = Manager.GetAddBuilding();
         
-        if(addBuilding > 0) {
-            if(Manager.currentMoney < Manager.buildingPrices[addBuilding - 1]) {
-                Debug.Log("You don't have enough money!");
-            } else {
-                selectedTile.GetComponent<SpriteRenderer>().sprite = buildings[addBuilding - 1];
-                Manager.currentMoney -= Manager.buildingPrices[addBuilding - 1];
-                Manager.totalMoneySpent += Manager.buildingPrices[addBuilding - 1];
-                Manager.buildingsPurchased.Add(selectedTile);
-                Manager.buildTypePurchased.Add(addBuilding - 1);
-                Manager.ChangeAddBuilding();
-
-            }
-      
+        if(addBuilding > 0 && clickable == true && disableGrid == false) {
+            selectedTile.GetComponent<SpriteRenderer>().sprite = buildings[addBuilding - 1];
+            Manager.buildingsPurchased.Add(selectedTile);
+            Manager.ChangeAddBuilding();
+            clickable = false;      
         }
     }
 }

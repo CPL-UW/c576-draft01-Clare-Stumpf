@@ -12,14 +12,15 @@ public class CoveredLossesTotalLabel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        labelText.text = String.Format("{0:N2}", (double) Manager.totalLossesCovered / Manager.totalLosses) + "%";  
-
+        labelText.text = "0";
     }
 
     // Update is called once per frame
     void Update()
     {
-        labelText.text = String.Format("{0:N2}", (double) Manager.totalLossesCovered / Manager.totalLosses + "%");  
-
+        if(Manager.totalLosses != 0) {
+            double percent = Math.Round((double) Manager.totalLossesCovered / Manager.totalLosses, 2, MidpointRounding.ToEven);
+            labelText.text = percent*100 + "%";  
+        }
     }
 }

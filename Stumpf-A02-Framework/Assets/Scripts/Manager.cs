@@ -20,6 +20,8 @@ public class Manager : MonoBehaviour
     public GameObject otherMenu;
     public TMP_Text timeText;
     public TMP_Text moneyText;
+    public TMP_Text notif;
+    public GameObject notifMenu;
 
     public static bool disableGrid;
 
@@ -32,8 +34,9 @@ public class Manager : MonoBehaviour
     public Button insuranceOpt3;
     public Button shiftFinanceForward;
     public Button shiftFinanceBack;
+    public Button notifExit;
 
-
+    private static bool addInsurance;
     private static int addBuilding;
 
     // Variables relating to the Building and Insurance Options
@@ -85,9 +88,10 @@ public class Manager : MonoBehaviour
         insuranceOpt2.onClick.AddListener(() => buttonCallBack(insuranceOpt2));        
         insuranceOpt3.onClick.AddListener(() => buttonCallBack(insuranceOpt3));
         shiftFinanceForward.onClick.AddListener(() => buttonCallBack(shiftFinanceForward));            
-        shiftFinanceBack.onClick.AddListener(() => buttonCallBack(shiftFinanceBack));            
+        shiftFinanceBack.onClick.AddListener(() => buttonCallBack(shiftFinanceBack)); 
+        // notifExit.onClick.AddListener(() => buttonCallBack(notifExit));                       
             
-       
+        addInsurance = false;
         addBuilding = 0;
         disableGrid = false;
 
@@ -98,7 +102,7 @@ public class Manager : MonoBehaviour
         insurancePremiums = new int[] {0, 71000, 20000};
         // Deductible for No insurance is technically infinity
         insuranceDeductibles = new int[] {1000000000, 50000, 500000};
-        totalYears = 2;
+        totalYears = 5;
         history = new int[totalYears, 4];
 
         year = 0;
@@ -133,10 +137,16 @@ public class Manager : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
         }
         if(button == playButton) {
-            PlayYear();
+            if(year + 1 < totalYears) {
+                PlayYear();
+                ToggleMenu(financeMenu);
+            }
+            // Game Over Screen Here
         }
         if(button == insuranceButton) {
-            ToggleMenu(insuranceMenu);            
+            if(addInsurance == false) {
+                ToggleMenu(insuranceMenu);            
+            }
             buildingMenu.SetActive(false);
             financeMenu.SetActive(false);
             otherMenu.SetActive(false);
@@ -165,35 +175,72 @@ public class Manager : MonoBehaviour
         }
        
         if(button == buildingOpt1) {
+            disableGrid = true;
             buildingMenu.SetActive(false);
-            ChangeDisableGrid(false);
-            addBuilding = 1;
+            if(currentMoney > buildingPrices[0]) {
+                addBuilding = 1;
+                addInsurance = true;
+                insuranceMenu.SetActive(true);
+                currentMoney -= buildingPrices[0];
+                totalMoneySpent += buildingPrices[0];
+                buildTypePurchased.Add(0);
+            }
+            // Notif that they don't have enough money
         }
         if(button == buildingOpt2) {
+            disableGrid = true;
             buildingMenu.SetActive(false);
-            ChangeDisableGrid(false);
-            addBuilding = 2;
+            if(currentMoney > buildingPrices[1]) {
+                addBuilding = 2;
+                addInsurance = true;
+                insuranceMenu.SetActive(true);
+                currentMoney -= buildingPrices[1];
+                totalMoneySpent += buildingPrices[1];
+                buildTypePurchased.Add(1);
+            }       
+            // Notif that they don't have enough money
+ 
         }
         if(button == buildingOpt3) {
+            disableGrid = true;
             buildingMenu.SetActive(false);
-            ChangeDisableGrid(false);
-            addBuilding = 3;
+            if(currentMoney > buildingPrices[2]) {
+                addBuilding = 3;
+                addInsurance = true;
+                insuranceMenu.SetActive(true);
+                currentMoney -= buildingPrices[2];
+                totalMoneySpent += buildingPrices[2];
+                buildTypePurchased.Add(2);
+            }
+            // Notif that they don't have enough money
+        
         }
 
         if(button == insuranceOpt1) {
             AddInsurance(0);
             insuranceMenu.SetActive(false);
-            ChangeDisableGrid(false);
+            addInsurance = false;
+            disableGrid = false;
         }
         if(button == insuranceOpt2) {
-            AddInsurance(1);
-            insuranceMenu.SetActive(false);
-            ChangeDisableGrid(false);
+            if(currentMoney > insurancePremiums[1]) {
+                AddInsurance(1);
+                insuranceMenu.SetActive(false);
+                addInsurance = false;
+                disableGrid = false;   
+            }
+            // Notif that they don't have enough money
+
         }
         if(button == insuranceOpt3) {
-            AddInsurance(2);
-            insuranceMenu.SetActive(false);
-            ChangeDisableGrid(false);
+            if(currentMoney > insurancePremiums[2]) {
+                AddInsurance(2);
+                insuranceMenu.SetActive(false);
+                addInsurance = false;
+                disableGrid = false;
+            }
+            // Notif that they don't have enough money
+
         }
         if(button == shiftFinanceForward) {
             if(showHistory + 1 < year) {
@@ -204,6 +251,9 @@ public class Manager : MonoBehaviour
             if(showHistory - 1 >= 0) {
                 showHistory--;
             }
+        }
+        if(button == notifExit) {
+            notifMenu.SetActive(false);
         }
 
     }
@@ -313,7 +363,7 @@ public class Manager : MonoBehaviour
             lossesCovered = 0;
             numLosses = 0;
             year++;
-            // financeMenu.SetActive(true);
+            revenue = 0;
         }
     }
 

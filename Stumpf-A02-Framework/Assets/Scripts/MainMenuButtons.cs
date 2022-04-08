@@ -10,13 +10,16 @@ public class MainMenuButtons : MonoBehaviour
 {
     public Button playButton;
     public Button closeButton;
-    public Button optionsButton;
+    public Button closeInstructionsButton;
+    public Button instructionsButton;
     public string mainScene = "SampleScene";
+    public GameObject instructionsMenu;
     // Start is called before the first frame update
     void Start() {
         playButton.onClick.AddListener(() => buttonCallBack(playButton));
-        optionsButton.onClick.AddListener(() => buttonCallBack(optionsButton));
+        instructionsButton.onClick.AddListener(() => buttonCallBack(instructionsButton));
         closeButton.onClick.AddListener(() => buttonCallBack(closeButton));
+        closeInstructionsButton.onClick.AddListener(() => buttonCallBack(closeInstructionsButton));
     }
 
     void buttonCallBack(Button button)
@@ -24,11 +27,15 @@ public class MainMenuButtons : MonoBehaviour
         if(button == playButton) {
             SceneManager.LoadScene(mainScene);
         }
-        if(button == optionsButton) {
-            Debug.Log("TODO: Add Options Menu");
+        if(button == instructionsButton) {
+            instructionsMenu.SetActive(true);
         }
         if(button == closeButton) {
             Application.Quit();
+        }
+        if(button == closeInstructionsButton) {
+            instructionsMenu.SetActive(false);
+            Debug.Log("Hello");
         }
     }
 

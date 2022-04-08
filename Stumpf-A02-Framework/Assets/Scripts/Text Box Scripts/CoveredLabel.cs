@@ -13,7 +13,7 @@ public class CoveredLabel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        labelText.text = "0";
+        labelText.text = "0%";
     }
 
     // Update is called once per frame
@@ -22,10 +22,8 @@ public class CoveredLabel : MonoBehaviour
         if(Manager.history[Manager.showHistory,3] == 0) {
 
         } else {
-            labelText.text = String.Format("{0:N2}",  (double) Manager.history[Manager.showHistory,3] / Manager.history[Manager.showHistory,2]) + "%";
-
+            double percent = Math.Round((double) Manager.history[Manager.showHistory,3] / Manager.history[Manager.showHistory,2],2, MidpointRounding.ToEven);
+            labelText.text = percent*100 + "%"; 
         }
-
-        
     }
 }

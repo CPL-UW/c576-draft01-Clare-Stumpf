@@ -45,10 +45,12 @@ public class Grid : MonoBehaviour
                 if(rand == 0) {
                     // Water
                     spawnedTile.GetComponent<SpriteRenderer>().color = Color.blue;
+                    spawnedTile.setClickable(false);
                 }
                 if(rand == 1) {
                     // Tree
                     spawnedTile.GetComponent<SpriteRenderer>().sprite = tree;
+                    spawnedTile.setClickable(false);
                 }
 
                 _tiles[new Vector2(x,y)] = spawnedTile;

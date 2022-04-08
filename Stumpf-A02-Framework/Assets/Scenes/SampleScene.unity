@@ -2449,6 +2449,8 @@ MonoBehaviour:
   otherMenu: {fileID: 260979503}
   timeText: {fileID: 406586450}
   moneyText: {fileID: 1625219893}
+  notif: {fileID: 0}
+  notifMenu: {fileID: 0}
   buildingOpt1: {fileID: 911302136}
   buildingOpt2: {fileID: 1207194579}
   buildingOpt3: {fileID: 1165995971}
@@ -2457,6 +2459,7 @@ MonoBehaviour:
   insuranceOpt3: {fileID: 346271212}
   shiftFinanceForward: {fileID: 432260279}
   shiftFinanceBack: {fileID: 90851362}
+  notifExit: {fileID: 0}
 --- !u!4 &424629540
 Transform:
   m_ObjectHideFlags: 0
@@ -3247,7 +3250,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 400,,000
+  m_text: 400,000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11872,15 +11875,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4817611529620251319, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4817611529620251319, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4817611529620251319, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4817611529620251319, guid: c2e38c07bbf765d4082cf639ba08429a, type: 3}
       propertyPath: m_AnchoredPosition.x
