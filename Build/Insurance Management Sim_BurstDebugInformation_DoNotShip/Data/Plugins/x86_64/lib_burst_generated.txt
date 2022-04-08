@@ -122,7 +122,7 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_ANIMATION_BURST
 --compilation-defines=TIMELINE_FRAMEACCURATE
 --compilation-defines=ENABLE_SPRITESHAPE_BURST
---linker-options=PdbAltPath="Insurance Project_Data/Plugins/x86_64"
+--linker-options=PdbAltPath="Insurance Management Sim_Data/Plugins/x86_64"
 --output=C:\Users\Clare\Docs2\CI Projects\c576-draft01-Clare-Stumpf\Stumpf-A02-Framework\Temp\StagingArea\Data\Plugins\x86_64\lib_burst_generated
 --root-assembly=C:\Users\Clare\Docs2\CI Projects\c576-draft01-Clare-Stumpf\Stumpf-A02-Framework\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
 --root-assembly=C:\Users\Clare\Docs2\CI Projects\c576-draft01-Clare-Stumpf\Stumpf-A02-Framework\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
@@ -269,7 +269,7 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_ANIMATION_BURST
 --compilation-defines=TIMELINE_FRAMEACCURATE
 --compilation-defines=ENABLE_SPRITESHAPE_BURST
---linker-options=PdbAltPath="Insurance Project_Data/Plugins/x86_64"
+--linker-options=PdbAltPath="Insurance Management Sim_Data/Plugins/x86_64"
 --output=C:\Users\Clare\Docs2\CI Projects\c576-draft01-Clare-Stumpf\Stumpf-A02-Framework\Temp\StagingArea\Data\Plugins\x86_64\lib_burst_generated
 --root-assembly=C:\Users\Clare\Docs2\CI Projects\c576-draft01-Clare-Stumpf\Stumpf-A02-Framework\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
 --root-assembly=C:\Users\Clare\Docs2\CI Projects\c576-draft01-Clare-Stumpf\Stumpf-A02-Framework\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
