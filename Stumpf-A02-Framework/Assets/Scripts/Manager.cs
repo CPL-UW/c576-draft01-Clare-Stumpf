@@ -185,6 +185,7 @@ public class Manager : MonoBehaviour
                 totalMoneySpent += buildingPrices[0];
                 buildTypePurchased.Add(0);
             }
+            InsuranceAnalytics.ReportPurchase("TestUser", year, 0);
             // Notif that they don't have enough money
         }
         if(button == buildingOpt2) {
@@ -197,7 +198,9 @@ public class Manager : MonoBehaviour
                 currentMoney -= buildingPrices[1];
                 totalMoneySpent += buildingPrices[1];
                 buildTypePurchased.Add(1);
-            }       
+            }
+            InsuranceAnalytics.ReportPurchase("TestUser", year, 1);
+       
             // Notif that they don't have enough money
  
         }
@@ -212,6 +215,7 @@ public class Manager : MonoBehaviour
                 totalMoneySpent += buildingPrices[2];
                 buildTypePurchased.Add(2);
             }
+            InsuranceAnalytics.ReportPurchase("TestUser", year, 2);
             // Notif that they don't have enough money
         
         }

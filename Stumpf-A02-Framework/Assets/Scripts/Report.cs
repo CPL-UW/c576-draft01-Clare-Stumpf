@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using System;
 using System.IO;
 using Unity.VisualScripting;
@@ -5,7 +7,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 using static InsuranceAnalytics;
-
 
 [Serializable]
 public class Report
@@ -16,9 +17,26 @@ public class Report
     public string eventKey;
     public string eventValue;
     public string userId;
-    public Vector3Int[] board = null;
-    public Vector3Int[] piece = null;
-    public Vector3Int delta = Vector3Int.zero;
+
+    public int year;
+    public static int currentMoney;
+    public static int totalMoneySpent;
+    public static int numLosses;
+    public static int totalNumLosses;
+    public static int losses;
+    public static int totalLosses;
+    public static int lossesCovered;
+    public static int totalLossesCovered;
+    public static int revenue;
+    public static int totalRevenue;
+    public static ArrayList buildingsPurchased;
+    public static ArrayList buildTypePurchased;
+    public static ArrayList insurancePurchased;
+    public static ArrayList historyOfInsurancePurchased;
+
+
+    public int building;
+
     public Report(string userId, string eventKey, string eventValue)
     {
         this.userId = userId;
@@ -29,7 +47,7 @@ public class Report
 
 public static class InsuranceAnalytics
 {
-    private const string path = "Assets/Logs/userLog.json";
+    private const string path = "UserLogs/userLogs.json";
     private static readonly StreamWriter Writer = new(path, true);
 
     public static void ReportEvent(string userId, string eventKey, string eventValue)
@@ -38,39 +56,18 @@ public static class InsuranceAnalytics
         Writer.Flush();
     }
     
-    public static void ReportPurchase(string userId, Vector3Int pDelta, Vector3Int[] pBoard, Vector3Int[] pPiece)
+    public static void ReportPurchase(string userId, int pBuilding, int pYear)
     {
-        var report = new Report(userId, "MOVE", "PlayerEvent")
+        var report = new Report(userId, "Add Building", "PlayerEvent")
         {
-            delta = pDelta,
-            board = pBoard,
-            piece = pPiece
+            building = pBuilding,
+            year = pYear
         };
         Writer.WriteLine(JsonUtility.ToJson(report));
         Writer.Flush();
-    }
-    
-    public static void ReportResults(string userId, Vector3Int[] pBoard, Vector3Int[] pPiece)
-    {
-        var report = new Report(userId, "ROTATE", "PlayerEvent")
-        {
-            board = pBoard,
-            piece = pPiece
-        };
-        Writer.WriteLine(JsonUtility.ToJson(report));
-        Writer.Flush();
-    }
-    
-    public static void ReportState(string userId, Vector3Int[] pBoard, Vector3Int[] pPiece)
-    {
-        var report = new Report(userId, "STATE", "KeyFrame")
-        {
-            board = pBoard,
-            piece = pPiece
-        };
-        Writer.WriteLine(JsonUtility.ToJson(report));
-        Writer.Flush();
-    }
+    }    
+
+
     
     public static void Close() => Writer.Close();
 }

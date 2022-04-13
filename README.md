@@ -1,8 +1,6 @@
 # c576-draft01-Clare-Stumpf
 c576-draft01-Clare-Stumpf created by GitHub Classroom
 
-Notes: Build doesn't seem to be working properly. Some features will work when I'm testing them in Unity but not in the build. I don't know why.
-
 Theme: Management Simulation
 
 Feature: Toolbuilding & Analytics
@@ -20,6 +18,7 @@ Features Implemented
 8. Hitting Play will simulate random losses and calculate the losses, revenue, and amount covered by insurance
 9. After a set number of years, it prints in the console whether you won or lost (do you have more or less than what you started with?)
 10. Linked Firebase to Unity Project (doesn't do much right now)
+11. Rudimentary Analytics Implemented (Was at a insurance conference from Sun-Wed and was more difficult to work on this than I thought it would be)
 
 Features To Be Implemented
 1. Actually do the math to get good numbers

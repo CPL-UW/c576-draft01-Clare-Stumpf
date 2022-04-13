@@ -1,0 +1,4 @@
+{"version":"0.0.6","datetime":"2022-04-12 22:24:49","epoch":1649827489430.0,"eventKey":"Add Building","eventValue":"PlayerEvent","userId":"TestUser","year":0,"building":0,"insurance":0}
+{"version":"0.0.6","datetime":"2022-04-12 22:24:59","epoch":1649827499983.0,"eventKey":"Add Building","eventValue":"PlayerEvent","userId":"TestUser","year":1,"building":1,"insurance":0}
+{"version":"0.0.6","datetime":"2022-04-12 22:27:03","epoch":1649827623080.0,"eventKey":"Add Building","eventValue":"PlayerEvent","userId":"TestUser","year":0,"building":0}
+{"version":"0.0.6","datetime":"2022-04-12 22:27:08","epoch":1649827628263.0,"eventKey":"Add Building","eventValue":"PlayerEvent","userId":"TestUser","year":0,"building":0}
